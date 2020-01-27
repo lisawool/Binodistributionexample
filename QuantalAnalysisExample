@@ -24,10 +24,11 @@ prob07 = binopdf(k,n,0.7)%pRelease = 0.7 (prob=0.1262)
 prob08 = binopdf(k,n,0.8)%pRelease = 0.8 (prob=0.0322)
 prob09 = binopdf(k,n,0.9)%pRelease = 0.9 (prob=0.0013)
 prob1 = binopdf(k,n,1)%pRelease = 1 (prob=0, because 14 will be released if pRelease = 1 :D )
-
+%This is the heart of maximum likelihood estimation. Finding the parameter that gives you the highest likelihood taht you would have gotten the data you got, GIVEN THE PARAMETER value you've found.
 %Based on these numbers, pRelease=0.6 is the most probable
 %%%
 %Exercise 3
+%Assume that these are INDEPENDENTTTT experiments
 %Probability of 8 quanta released
 prob1=(8,14,0.1)
 %Probability of 5 quanta released
@@ -43,6 +44,8 @@ k1=8
 k2=5
 n1=14
 n2=14
+%Note that bleow, we're fixing the p to different values...and finding the MAXIMUM computation, which is the MOST LIKELY reason you would have gotten this result :D 
+%NOTE THAT FOR THIS TO BE MEANINGFUL YOU NEED TO ASSUME THAT THE MODEL YOURE WORKING WITH IS TRUE. THERE ARE NO PROBABILITIES ASSOCIATED WITH THE MODEL BECAUSE YOU'RE ASSUMING IT HAPPENS AND YOU'RE VAARYING IT TO TEST DIFFERENT ONES; WHICH ALLOWS YOU TO SELECT THE ONE MOST LIKELY TO PRODUCE THE DATA YOU SAW
 % likelihood and log-likelihood functions for sample size = 2
 ps = (0:0.01:1.0)';           % Array of possible release probabilities -- compute
                               % at a resolution of 0.01
@@ -251,6 +254,13 @@ prob = binopdf(k,n,pNull)    % p>0.05, so cannot rule out that we would have got
   
 
 
+
+
+%%Class notes
+%Likelihood: p(data|model) where model is the parameters of a parametric distribution (e.g. n and p, here; data is k, I think?)
+%Assume form of the model; given that assumed form, what's the probability that you would have gotten your data?
+%Maximum likelihood estimation - you want to make your likelihood as high as possible
+%p-value fitting is based ont he likelihood term
 
 
 
